@@ -11,8 +11,10 @@ config_version=3
 [application]
 
 config/name="BotCompetition"
+run/main_scene="res://Arena.tscn"
 config/icon="res://icon.png"
 
 [rendering]
 
+environment/default_clear_color=Color( 0, 0, 0, 1 )
 environment/default_environment="res://default_env.tres"
