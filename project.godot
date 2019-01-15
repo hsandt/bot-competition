@@ -11,7 +11,7 @@ config_version=3
 [application]
 
 config/name="BotCompetition"
-run/main_scene="res://Arena.tscn"
+run/main_scene="res://Scenes/Arena.tscn"
 config/icon="res://icon.png"
 
 [rendering]
