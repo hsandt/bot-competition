@@ -2,8 +2,8 @@
 
 [ext_resource path="res://Scripts/KinematicBody2D.gd" type="Script" id=1]
 [ext_resource path="res://Graphics/Sprites/square_red.png" type="Texture" id=2]
-[ext_resource path="res://Scripts/AppManager.gd" type="Script" id=3]
-[ext_resource path="res://Scenes/Prefabs/Goal.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/Prefabs/Goal.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Prefabs/AppManager.tscn" type="PackedScene" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -91,13 +91,10 @@ _sections_unfolded = [ "Material", "Offset", "Transform" ]
 shape = SubResource( 2 )
 _sections_unfolded = [ "Material", "Visibility" ]
 
-[node name="AppManager" type="Node" parent="." index="3"]
-
-script = ExtResource( 3 )
-_sections_unfolded = [ "Pause" ]
-
-[node name="Node2D" parent="." index="4" instance=ExtResource( 4 )]
+[node name="Node2D" parent="." index="3" instance=ExtResource( 3 )]
 
 position = Vector2( 342.859, 89.786 )
+
+[node name="AppManager" parent="." index="4" instance=ExtResource( 4 )]
 
 

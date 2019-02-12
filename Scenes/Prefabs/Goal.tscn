@@ -7,7 +7,7 @@
 script/source = "extends Node2D
 
 func _on_Area2D_body_entered(body):
-	print(5)
+	get_tree().change_scene(\"res://Scenes/Result.tscn\")
 "
 
 [sub_resource type="RectangleShape2D" id=1]
@@ -16,7 +16,7 @@ custom_solver_bias = 0.0
 extents = Vector2( 30, 30 )
 _sections_unfolded = [ "Resource" ]
 
-[node name="Node2D" type="Node2D" index="0"]
+[node name="Node2D" type="Node2D"]
 
 script = SubResource( 2 )
 _sections_unfolded = [ "Transform" ]
