@@ -23,9 +23,8 @@ func _unhandled_input(event: InputEvent):
 			print(event.global_position)
 			path = get_simple_path(player.global_position, event.global_position)
 			line_2D.points = path
+			# path is relative, so in case this node is not at the origin, counter the offset
+			for i in range(path.size()):
+				line_2D.points[i] -= global_position
 			print(path)
 			update()
-
-func _draw():
-	for p in path:
-		draw_circle(p, radius, ColorN("white"))

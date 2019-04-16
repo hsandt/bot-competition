@@ -67,7 +67,7 @@ shape = SubResource( 3 )
 [node name="Sprite" type="Sprite" parent="Path2D/PathFollow2D/KinematicBody2D"]
 texture = ExtResource( 1 )
 
-[node name="KinematicBody2D with Navigation" type="KinematicBody2D" parent="." groups=[
+[node name="Character" type="KinematicBody2D" parent="." groups=[
 "player",
 ]]
 position = Vector2( 64.0776, 62.2726 )
@@ -77,13 +77,14 @@ __meta__ = {
 }
 speed = 20.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody2D with Navigation"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Character"]
 shape = SubResource( 3 )
 
-[node name="Sprite" type="Sprite" parent="KinematicBody2D with Navigation"]
+[node name="Sprite" type="Sprite" parent="Character"]
 texture = ExtResource( 1 )
 
 [node name="Navigation2D" type="Navigation2D" parent="."]
+position = Vector2( -85.1157, -49.5219 )
 script = ExtResource( 5 )
 
 [node name="NavigationPolygonInstance" type="NavigationPolygonInstance" parent="Navigation2D"]
