@@ -2,6 +2,8 @@ extends Navigation2D
 
 export var radius = 2
 
+onready var line_2D : Line2D = $Line2D
+
 var path = []
 
 func _ready():
@@ -14,12 +16,13 @@ func _ready():
 #	# Update game logic here.
 #	pass
 
-func _input(event):
+func _unhandled_input(event: InputEvent):
 	if event.is_action_pressed("set_move_target"):
-		print(event.position)
-		var end = event.position
 		for player in get_tree().get_nodes_in_group("player"):
-			path = get_simple_path(player.position, end)
+			print(player.global_position)
+			print(event.global_position)
+			path = get_simple_path(player.global_position, event.global_position)
+			line_2D.points = path
 			print(path)
 			update()
 
