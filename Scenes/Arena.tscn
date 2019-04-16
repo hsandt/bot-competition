@@ -8,191 +8,92 @@
 [ext_resource path="res://Tilesets/tileset.tres" type="TileSet" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
-
-custom_solver_bias = 0.0
 extents = Vector2( 50, 10 )
 
 [sub_resource type="Curve2D" id=2]
-
-bake_interval = 5.0
 _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, -10.83, -27.9775, 0, 0, 0, 0, 30.685, -8.12251, 0, 0, 0, 0, 152.523, -47.8326, 0, 0, 0, 0, 239.163, 12.635 )
 }
 
 [sub_resource type="RectangleShape2D" id=3]
 
-custom_solver_bias = 0.0
-extents = Vector2( 10, 10 )
-
 [sub_resource type="NavigationPolygon" id=4]
-
 vertices = PoolVector2Array( -11.5103, -12.9257, 109.516, -13.6452, 45.4452, 39.9349, 26.4083, 41.2571, -13.7547, 105.064, 25.983, 51.0076, 108.998, 105.783, 45.1914, 50.2477 )
 polygons = [ PoolIntArray( 0, 1, 2, 3 ), PoolIntArray( 4, 0, 3, 5 ), PoolIntArray( 2, 1, 6, 7 ), PoolIntArray( 7, 6, 4, 5 ) ]
 outlines = [ PoolVector2Array( -11.5103, -12.9257, 109.516, -13.6452, 108.998, 105.783, -13.7547, 105.064 ), PoolVector2Array( 25.983, 51.0076, 26.4083, 41.2571, 45.4452, 39.9349, 45.1914, 50.2477 ) ]
-_sections_unfolded = [ "Resource" ]
 
-[node name="Root" type="Node2D" index="0"]
+[node name="Root" type="Node2D"]
 
-[node name="Camera2D" type="Camera2D" parent="." index="0"]
+[node name="Camera2D" type="Camera2D" parent="."]
 
-anchor_mode = 1
-rotating = false
-current = false
-zoom = Vector2( 1, 1 )
-limit_left = -10000000
-limit_top = -10000000
-limit_right = 10000000
-limit_bottom = 10000000
-limit_smoothed = false
-drag_margin_h_enabled = true
-drag_margin_v_enabled = true
-smoothing_enabled = false
-smoothing_speed = 5.0
-offset_v = 0.0
-offset_h = 0.0
-drag_margin_left = 0.2
-drag_margin_top = 0.2
-drag_margin_right = 0.2
-drag_margin_bottom = 0.2
-editor_draw_screen = true
-editor_draw_limits = false
-editor_draw_drag_margin = false
-_sections_unfolded = [ "Drag Margin", "Editor", "Limit", "Material", "Offset", "Pause", "Smoothing", "Transform", "Visibility", "Z Index" ]
-
-[node name="Wall" type="StaticBody2D" parent="." index="1"]
-
+[node name="Wall" type="StaticBody2D" parent="."]
 position = Vector2( 210.188, 139.963 )
-input_pickable = false
-collision_layer = 1
-collision_mask = 1
-constant_linear_velocity = Vector2( 0, 0 )
-constant_angular_velocity = 0.0
-friction = 1.0
-bounce = 0.0
-_sections_unfolded = [ "Transform" ]
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Sprite" type="Sprite" parent="Wall" index="0"]
-
+[node name="Sprite" type="Sprite" parent="Wall"]
 scale = Vector2( 5, 1 )
 texture = ExtResource( 1 )
-_sections_unfolded = [ "Material", "Offset", "Transform" ]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall" index="1"]
-
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall"]
 shape = SubResource( 1 )
-_sections_unfolded = [ "Material", "Visibility" ]
 
-[node name="Goal" parent="." index="2" instance=ExtResource( 2 )]
-
+[node name="Goal" parent="." instance=ExtResource( 2 )]
 position = Vector2( 342.859, 89.786 )
 
-[node name="AppManager" parent="." index="3" instance=ExtResource( 3 )]
+[node name="AppManager" parent="." instance=ExtResource( 3 )]
 
-[node name="Path2D" type="Path2D" parent="." index="4"]
-
+[node name="Path2D" type="Path2D" parent="."]
 visible = false
-self_modulate = Color( 0.5, 0.6, 1, 0.7 )
 position = Vector2( 74.9076, 90.2501 )
 curve = SubResource( 2 )
-_sections_unfolded = [ "Transform" ]
 
-[node name="PathFollow2D" type="PathFollow2D" parent="Path2D" index="0"]
-
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
 position = Vector2( -10.83, -27.9775 )
-offset = 0.0
-h_offset = 0.0
-v_offset = 0.0
 rotate = false
-cubic_interp = true
 loop = false
-lookahead = 4.0
-_sections_unfolded = [ "Transform" ]
 
-[node name="KinematicBody2D" type="KinematicBody2D" parent="Path2D/PathFollow2D" index="0"]
-
-input_pickable = false
-collision_layer = 1
-collision_mask = 1
-collision/safe_margin = 0.08
+[node name="KinematicBody2D" type="KinematicBody2D" parent="Path2D/PathFollow2D"]
 script = ExtResource( 4 )
-_sections_unfolded = [ "Collision", "Material", "Pause", "Pickable", "Transform", "Visibility", "collision" ]
 __meta__ = {
 "_edit_group_": true
 }
 speed = 20.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Path2D/PathFollow2D/KinematicBody2D" index="0"]
-
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Path2D/PathFollow2D/KinematicBody2D"]
 shape = SubResource( 3 )
-_sections_unfolded = [ "Material", "Transform", "Visibility", "Z Index" ]
 
-[node name="Sprite" type="Sprite" parent="Path2D/PathFollow2D/KinematicBody2D" index="1"]
-
+[node name="Sprite" type="Sprite" parent="Path2D/PathFollow2D/KinematicBody2D"]
 texture = ExtResource( 1 )
 
-[node name="KinematicBody2D with Navigation" type="KinematicBody2D" parent="." index="5" groups=[
+[node name="KinematicBody2D with Navigation" type="KinematicBody2D" parent="." groups=[
 "player",
 ]]
-
 position = Vector2( 64.0776, 62.2726 )
-input_pickable = false
-collision_layer = 1
-collision_mask = 1
-collision/safe_margin = 0.08
 script = ExtResource( 4 )
-_sections_unfolded = [ "Collision", "Material", "Pause", "Pickable", "Transform", "Visibility", "collision" ]
 __meta__ = {
 "_edit_group_": true
 }
 speed = 20.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody2D with Navigation" index="0"]
-
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody2D with Navigation"]
 shape = SubResource( 3 )
-_sections_unfolded = [ "Material", "Transform", "Visibility", "Z Index" ]
 
-[node name="Sprite" type="Sprite" parent="KinematicBody2D with Navigation" index="1"]
-
+[node name="Sprite" type="Sprite" parent="KinematicBody2D with Navigation"]
 texture = ExtResource( 1 )
 
-[node name="Navigation2D" type="Navigation2D" parent="." index="6"]
-
+[node name="Navigation2D" type="Navigation2D" parent="."]
 position = Vector2( 175.26, 97.9405 )
 scale = Vector2( 5.80207, 3.0124 )
 script = ExtResource( 5 )
-_sections_unfolded = [ "Material", "Pause", "Transform", "Visibility", "Z Index" ]
-radius = 2
 
-[node name="NavigationPolygonInstance" type="NavigationPolygonInstance" parent="Navigation2D" index="0"]
-
+[node name="NavigationPolygonInstance" type="NavigationPolygonInstance" parent="Navigation2D"]
 position = Vector2( -25.309, -23.3942 )
 scale = Vector2( 0.900952, 0.832847 )
 navpoly = SubResource( 4 )
-enabled = true
-_sections_unfolded = [ "Transform" ]
 
-[node name="TileMap" type="TileMap" parent="." index="7"]
-
-mode = 0
+[node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource( 6 )
-cell_size = Vector2( 64, 64 )
-cell_quadrant_size = 16
-cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-cell_half_offset = 2
-cell_tile_origin = 0
-cell_y_sort = false
-cell_clip_uv = false
-collision_use_kinematic = false
-collision_friction = 1.0
-collision_bounce = 0.0
-collision_layer = 1
-collision_mask = 1
-occluder_light_mask = 1
 format = 1
-tile_data = PoolIntArray(  )
-_sections_unfolded = [ "Cell", "Collision" ]
-
 
