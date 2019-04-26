@@ -19,6 +19,10 @@ config/name="BotCompetition"
 run/main_scene="res://Scenes/Arena.tscn"
 config/icon="res://icon.png"
 
+[editor_plugins]
+
+enabled=PoolStringArray( "gut" )
+
 [input]
 
 app_exit={
