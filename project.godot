@@ -37,6 +37,13 @@ set_move_target={
  ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="Environment"
+2d_physics/layer_2="Props"
+2d_physics/layer_3="Items"
+2d_physics/layer_4="Character"
+
 [rendering]
 
 environment/default_clear_color=Color( 0, 0, 0, 1 )

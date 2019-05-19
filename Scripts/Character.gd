@@ -72,5 +72,9 @@ func update_debug_line():
 	for i in range(path.size()):
 		line_2D.points[i] -= navigation2D.global_position
 
+func pick_palet(palet):
+	print("Pick palet: " + str(palet.name))
+	palet.queue_free()
+
 func _draw():
 	pass

@@ -4,7 +4,7 @@
 [ext_resource path="res://Scenes/Prefabs/Goal.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/Prefabs/AppManager.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scripts/Character.gd" type="Script" id=4]
-[ext_resource path="res://Scenes/Navigation2D.gd" type="Script" id=5]
+[ext_resource path="res://Scripts/Navigation2D.gd" type="Script" id=5]
 [ext_resource path="res://Tilesets/tileset.tres" type="TileSet" id=6]
 [ext_resource path="res://Scenes/Prefabs/Palet.tscn" type="PackedScene" id=7]
 
@@ -44,6 +44,8 @@ position = Vector2( 342.859, 89.786 )
 "player",
 ]]
 position = Vector2( 64.0776, 62.2726 )
+collision_layer = 8
+collision_mask = 15
 script = ExtResource( 4 )
 __meta__ = {
 "_edit_group_": true
@@ -77,7 +79,7 @@ tile_set = ExtResource( 6 )
 format = 1
 
 [node name="Palet" parent="." instance=ExtResource( 7 )]
-position = Vector2( 329.411, 188.322 )
+position = Vector2( 72.4784, 76.8901 )
 
 [node name="Palet2" parent="." instance=ExtResource( 7 )]
 position = Vector2( 130, 230 )

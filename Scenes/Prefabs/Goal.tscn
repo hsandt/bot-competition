@@ -29,5 +29,3 @@ texture = ExtResource( 1 )
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_Area2D_body_exited"]
-[connection signal="renamed" from="Area2D/CollisionShape2D" to="." method="_on_CollisionShape2D_renamed"]
-[connection signal="tree_exited" from="Area2D/CollisionShape2D" to="Area2D/CollisionShape2D" method="_on_CollisionShape2D_tree_exited"]
