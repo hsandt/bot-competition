@@ -79,8 +79,7 @@ tile_set = ExtResource( 6 )
 format = 1
 
 [node name="Palet" parent="." instance=ExtResource( 7 )]
-position = Vector2( 72.4784, 76.8901 )
+position = Vector2( 72.7288, 76.8901 )
 
 [node name="Palet2" parent="." instance=ExtResource( 7 )]
 position = Vector2( 130, 230 )
-

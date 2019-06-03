@@ -19,6 +19,11 @@ config/name="BotCompetition"
 run/main_scene="res://Scenes/Arena.tscn"
 config/icon="res://icon.png"
 
+[display]
+
+window/dpi/allow_hidpi=true
+window/stretch/mode="viewport"
+
 [editor_plugins]
 
 enabled=PoolStringArray( "gut" )
