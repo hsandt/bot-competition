@@ -23,7 +23,8 @@ func _ready():
 	# so I use a preconstructed Line2D under navigation2D
 #	line_2D = Line2D.new()
 #	get_tree().get_root().add_child(line_2D)
-	pass
+	# initial update to clear debug line
+	update_debug_line()
 
 func _process(delta):
 	if moving:
