@@ -19,11 +19,6 @@ config/name="BotCompetition"
 run/main_scene="res://Scenes/Arena.tscn"
 config/icon="res://icon.png"
 
-[display]
-
-window/dpi/allow_hidpi=true
-window/stretch/mode="viewport"
-
 [editor_plugins]
 
 enabled=PoolStringArray( "gut" )
@@ -39,6 +34,11 @@ app_exit={
 set_move_target={
 "deadzone": 0.5,
 "events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":1,"pressed":false,"doubleclick":false,"script":null)
+ ]
+}
+toggle_hidpi={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777247,"unicode":0,"echo":false,"script":null)
  ]
 }
 
