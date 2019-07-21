@@ -48,7 +48,7 @@ func _process(delta):
 			path.clear()
 			update_debug_line()
 
-func compute_path_to_target(target_position):
+func start_move_to(target_position):
 	"""Compute a path to a new target position and start moving"""
 	
 	# compute path to target position
