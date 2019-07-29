@@ -25,6 +25,7 @@ outlines = [ PoolVector2Array( 0, 0, 510, 0, 510, 300, 0, 300 ), PoolVector2Arra
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="Wall" type="StaticBody2D" parent="."]
+editor/display_folded = true
 position = Vector2( 210.188, 139.963 )
 __meta__ = {
 "_edit_group_": true
@@ -39,6 +40,7 @@ z_index = 1
 shape = SubResource( 1 )
 
 [node name="Wall2" type="StaticBody2D" parent="."]
+editor/display_folded = true
 position = Vector2( 339.564, 208.326 )
 __meta__ = {
 "_edit_group_": true
@@ -53,6 +55,7 @@ z_index = 1
 shape = SubResource( 1 )
 
 [node name="Wall3" type="StaticBody2D" parent="."]
+editor/display_folded = true
 position = Vector2( 347.65, 64.2488 )
 
 [node name="Sprite" type="Sprite" parent="Wall3"]
@@ -64,6 +67,7 @@ z_index = 1
 shape = SubResource( 2 )
 
 [node name="Wall4" type="StaticBody2D" parent="."]
+editor/display_folded = true
 position = Vector2( 347.65, 64.2488 )
 
 [node name="Sprite" type="Sprite" parent="Wall4"]
@@ -101,7 +105,6 @@ z_index = 1
 points = PoolVector2Array( -4.25176, -36.5185, 15.3859, -38.7147, 42.4985, -34.0783, 42.4985, 12.7738, 147.047, 262.694, 17.5397, 36.4439, -15.4009, 27.1711 )
 width = 5.0
 default_color = Color( 0.4, 0.501961, 1, 0.501961 )
-texture_mode = 91
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource( 6 )
@@ -114,3 +117,6 @@ position = Vector2( 72.4784, 76.8901 )
 position = Vector2( 130, 230 )
 
 [node name="AICharacter" parent="." instance=ExtResource( 8 )]
+
+[node name="AICharacter2" parent="." instance=ExtResource( 8 )]
+position = Vector2( 155.629, 50.3311 )
