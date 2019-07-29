@@ -87,6 +87,7 @@ position = Vector2( 462.302, 250.736 )
 [node name="AppManager" parent="." instance=ExtResource( 3 )]
 
 [node name="HumanCharacter" parent="." instance=ExtResource( 4 )]
+position = Vector2( 76.9037, 243.296 )
 
 [node name="Navigation2D" type="Navigation2D" parent="." groups=[
 "navigation",
@@ -105,18 +106,20 @@ z_index = 1
 points = PoolVector2Array( -4.25176, -36.5185, 15.3859, -38.7147, 42.4985, -34.0783, 42.4985, 12.7738, 147.047, 262.694, 17.5397, 36.4439, -15.4009, 27.1711 )
 width = 5.0
 default_color = Color( 0.4, 0.501961, 1, 0.501961 )
+texture_mode = 273403984
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource( 6 )
 format = 1
 
 [node name="Palet" parent="." instance=ExtResource( 7 )]
-position = Vector2( 72.4784, 76.8901 )
+position = Vector2( 222.518, 31.4494 )
 
 [node name="Palet2" parent="." instance=ExtResource( 7 )]
 position = Vector2( 130, 230 )
 
 [node name="AICharacter" parent="." instance=ExtResource( 8 )]
+position = Vector2( 45.2154, 150.582 )
 
 [node name="AICharacter2" parent="." instance=ExtResource( 8 )]
-position = Vector2( 155.629, 50.3311 )
+position = Vector2( 271.374, 38.3279 )
