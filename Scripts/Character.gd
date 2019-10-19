@@ -117,4 +117,6 @@ func _draw():
 		offset_path[i] -= global_position
 		pass
 	
+	# do not check if OS.is_debug_build() as we want to show navigation paths
+	# in release too, for AI demonstration
 	draw_multiline(offset_path, Color.red)
