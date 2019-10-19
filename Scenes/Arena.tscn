@@ -123,3 +123,7 @@ position = Vector2( 45.2154, 150.582 )
 
 [node name="AICharacter2" parent="." instance=ExtResource( 8 )]
 position = Vector2( 271.374, 38.3279 )
+
+[node name="OriginLineDrawer" type="Node2D" parent="." groups=[
+"line_drawer",
+]]

@@ -10,7 +10,7 @@ var line_2D : Line2D
 export var speed = 100.0
 
 # Current navigation path
-var path : Array = []
+var path : PoolVector2Array = []
 
 # Should the character move on the path now?
 var moving : = false
@@ -18,12 +18,16 @@ var moving : = false
 # Current distance on path, from start to end point
 var current_distance : float = 0.0
 
-func _ready():
-	var navigation_group = get_tree().get_nodes_in_group("navigation")
+# Candidate for generic helper function (could be static, but need to get root somewhat)
+func get_single_node_by_tag(tag: String):
+	var group = get_tree().get_nodes_in_group(tag)
 	# will fail when playing Character prefab scene alone, don't do that!
-	assert(not navigation_group.empty())
-	navigation2D = navigation_group[0]
-	# FIXME: support multiple characters by providing multiple debug lines
+	assert(not group.empty())
+	return group[0]
+
+func _ready():
+	# will fail when playing Character prefab scene alone, don't do that!
+	navigation2D = get_single_node_by_tag("navigation")
 	line_2D = navigation2D.get_node("Line2D")
 	
 	# for some reason, adding node to root doesn't work,
@@ -45,8 +49,11 @@ func _process(delta):
 		if reached_end:
 			# last point reached, stop moving and clear path
 			moving = false
-			path.clear()
+			path.resize(0)  # like Array.clear, but for PoolVector2Array
 			update_debug_line()
+		
+		# Call _draw
+		update()
 
 func start_move_to(target_position):
 	"""Compute a path to a new target position and start moving"""
@@ -87,15 +94,27 @@ func get_point_on_path(distance):
 	return [path[-1], true]
 
 func update_debug_line():
-	line_2D.points = path
-	
-	# path is relative, so in case this node is not at the origin, counter the offset
-	for i in range(path.size()):
-		line_2D.points[i] -= navigation2D.global_position
+	pass
+#
+#	line_2D.points = path
+#
+#	# path is relative, so in case this node is not at the origin, counter the offset
+#	for i in range(path.size()):
+#		line_2D.points[i] -= navigation2D.global_position
 
 func pick_palet(palet):
 	print("Pick palet: " + str(palet.name))
 	palet.queue_free()
 
 func _draw():
-	pass
+	# map navigation offset subtraction to copy of path (Pools are passed by value)
+	var offset_path = path
+	
+	# new version using just draw_multiline, which is relative to Node2D position
+	# looks like line_drawer.draw_multiline doesn't work despite line_drawer
+	# being at the origin, so we must manually subtract the global position
+	for i in range(len(offset_path)):
+		offset_path[i] -= global_position
+		pass
+	
+	draw_multiline(offset_path, Color.red)
