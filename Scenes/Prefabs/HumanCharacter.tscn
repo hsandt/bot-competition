@@ -5,44 +5,44 @@
 
 [sub_resource type="RectangleShape2D" id=1]
 
-[sub_resource type="VisualShaderNodeInput" id=3]
+[sub_resource type="VisualShaderNodeInput" id=2]
 output_port_for_preview = 0
 input_name = "color"
 
-[sub_resource type="VisualShader" id=4]
+[sub_resource type="VisualShader" id=3]
 code = "shader_type canvas_item;
 
 
 
 void vertex() {
-// Output:0
+// Ausgabe:0
 
 }
 
 void fragment() {
-// Input:3
+// Eingang:3
 	vec3 n_out3p0;
 	n_out3p0 = COLOR.rgb;
 
-// Output:0
+// Ausgabe:0
 	COLOR.rgb = n_out3p0;
 
 }
 
 void light() {
-// Output:0
+// Ausgabe:0
 
 }
 "
 graph_offset = Vector2( -132, -77.25 )
 mode = 1
 flags/light_only = false
-nodes/fragment/3/node = SubResource( 3 )
+nodes/fragment/3/node = SubResource( 2 )
 nodes/fragment/3/position = Vector2( 80, 160 )
 nodes/fragment/connections = PoolIntArray( 3, 0, 0, 0 )
 
-[sub_resource type="ShaderMaterial" id=5]
-shader = SubResource( 4 )
+[sub_resource type="ShaderMaterial" id=4]
+shader = SubResource( 3 )
 
 [node name="HumanCharacter" type="KinematicBody2D" groups=[
 "player",
@@ -59,5 +59,5 @@ __meta__ = {
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
-material = SubResource( 5 )
+material = SubResource( 4 )
 texture = ExtResource( 2 )

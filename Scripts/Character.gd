@@ -1,4 +1,9 @@
 extends KinematicBody2D
+class_name Character
+
+## References
+
+onready var game_manager = $"/root/Root/GameManager"
 
 # Reference to common Navigation 2D for this level
 var navigation2D : Navigation2D
@@ -6,8 +11,12 @@ var navigation2D : Navigation2D
 # Debug line showing the current path
 var line_2D : Line2D
 
+## Parameters
+
 # Character speed (px/s)
 export var speed = 100.0
+
+## State
 
 # Current navigation path
 var path : PoolVector2Array = []
@@ -18,16 +27,17 @@ var moving : = false
 # Current distance on path, from start to end point
 var current_distance : float = 0.0
 
-# Candidate for generic helper function (could be static, but need to get root somewhat)
-func get_single_node_by_tag(tag: String):
-	var group = get_tree().get_nodes_in_group(tag)
-	# will fail when playing Character prefab scene alone, don't do that!
-	assert(not group.empty())
-	return group[0]
+# We MUST initialize the array to []
+# or the array will initialize to some common []
+# shared across Character instances (like exported arrays becoming static)
+# causing havoc in Character behaviour
+# Note that for now, we only allow 1 palet at a time, the array is only
+#   to allow more later.
+var picked_palets: Array = []
 
 func _ready():
 	# will fail when playing Character prefab scene alone, don't do that!
-	navigation2D = get_single_node_by_tag("navigation")
+	navigation2D = Utils.get_single_node_by_tag(self, "navigation")
 	line_2D = navigation2D.get_node("Line2D")
 	
 	# for some reason, adding node to root doesn't work,
@@ -102,9 +112,47 @@ func update_debug_line():
 #	for i in range(path.size()):
 #		line_2D.points[i] -= navigation2D.global_position
 
-func pick_palet(palet):
-	print("Pick palet: " + str(palet.name))
-	palet.queue_free()
+func try_pick_palet(palet) -> bool:
+	# Character can only pick one palet at a time
+	if not picked_palets.empty():
+		# Failure
+		return false
+		
+	# reparent palet to this character (character starts dragging palet)
+	palet.get_parent().remove_child(palet)
+	add_child(palet)
+	
+	# Characters have no forward direction/grabbing anchor so for now,
+	#   just place the palet at a fixed offset
+	palet.position = Vector2(10, 10)
+	picked_palets.append(palet)
+	
+	# Set picker ref on palet side
+	palet.picker = self
+	
+	# Notify
+	game_manager.emit_signal("character_picked_palet", self, palet)
+	
+	# Success
+	print(name + " picks " + palet.name)
+	return true
+
+func drop_palet(palet):
+	var palet_index = picked_palets.find(palet)
+	assert(palet_index != -1)
+	picked_palets.remove(palet_index)
+	
+	# Reparent
+	remove_child(palet)
+	# probably add palet as child to some container box, or maybe just the arena
+	
+	# Clear ref
+	palet.picker = null
+	
+	# Notify
+	game_manager.emit_signal("character_dropped_palet", self, palet)
+	
+	print(name + " drops " + palet.name)
 
 func _draw():
 	# map navigation offset subtraction to copy of path (Pools are passed by value)

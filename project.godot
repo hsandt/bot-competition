@@ -9,13 +9,25 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "KinematicBody2D",
+"class": "Character",
+"language": "GDScript",
+"path": "res://Scripts/Character.gd"
+}, {
 "base": "Node2D",
 "class": "Palet",
 "language": "GDScript",
 "path": "res://Scripts/Palet.gd"
+}, {
+"base": "Reference",
+"class": "Utils",
+"language": "GDScript",
+"path": "res://Scripts/Utils.gd"
 } ]
 _global_script_class_icons={
-"Palet": ""
+"Character": "",
+"Palet": "",
+"Utils": ""
 }
 
 [application]

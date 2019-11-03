@@ -1,13 +1,14 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Graphics/Sprites/square_red.png" type="Texture" id=1]
 [ext_resource path="res://Scenes/Prefabs/Goal.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/Prefabs/AppManager.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Scenes/Prefabs/HumanCharacter.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scripts/GameManager.gd" type="Script" id=4]
 [ext_resource path="res://Scripts/Navigation2D.gd" type="Script" id=5]
 [ext_resource path="res://Tilesets/tileset.tres" type="TileSet" id=6]
 [ext_resource path="res://Scenes/Prefabs/Palet.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Scenes/Prefabs/AICharacter.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Scenes/Prefabs/HumanCharacter.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Scenes/Prefabs/AICharacter.tscn" type="PackedScene" id=9]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 50, 10 )
@@ -86,8 +87,8 @@ position = Vector2( 462.302, 250.736 )
 
 [node name="AppManager" parent="." instance=ExtResource( 3 )]
 
-[node name="HumanCharacter" parent="." instance=ExtResource( 4 )]
-position = Vector2( 76.9037, 243.296 )
+[node name="GameManager" type="Node" parent="."]
+script = ExtResource( 4 )
 
 [node name="Navigation2D" type="Navigation2D" parent="." groups=[
 "navigation",
@@ -118,10 +119,19 @@ position = Vector2( 222.518, 31.4494 )
 [node name="Palet2" parent="." instance=ExtResource( 7 )]
 position = Vector2( 130, 230 )
 
-[node name="AICharacter" parent="." instance=ExtResource( 8 )]
+[node name="Palet3" parent="." instance=ExtResource( 7 )]
+position = Vector2( 262.316, 237.351 )
+
+[node name="Palet4" parent="." instance=ExtResource( 7 )]
+position = Vector2( 431.386, 74.1612 )
+
+[node name="HumanCharacter" parent="." instance=ExtResource( 8 )]
+position = Vector2( 76.9037, 243.296 )
+
+[node name="AICharacter" parent="." instance=ExtResource( 9 )]
 position = Vector2( 45.2154, 150.582 )
 
-[node name="AICharacter2" parent="." instance=ExtResource( 8 )]
+[node name="AICharacter2" parent="." instance=ExtResource( 9 )]
 position = Vector2( 271.374, 38.3279 )
 
 [node name="OriginLineDrawer" type="Node2D" parent="." groups=[
