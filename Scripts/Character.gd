@@ -115,7 +115,7 @@ func update_debug_line():
 func try_pick_palet(palet) -> bool:
 	# Character can only pick one palet at a time
 	if not picked_palets.empty():
-		# Failure
+		# Failure (not code error, normal game behavior)
 		return false
 		
 	# reparent palet to this character (character starts dragging palet)
@@ -130,11 +130,12 @@ func try_pick_palet(palet) -> bool:
 	# Set picker ref on palet side
 	palet.picker = self
 	
+	print("[Character] " + name + " picks " + palet.name)
+	
 	# Notify
 	game_manager.emit_signal("character_picked_palet", self, palet)
 	
 	# Success
-	print(name + " picks " + palet.name)
 	return true
 
 func drop_palet(palet):
@@ -152,7 +153,7 @@ func drop_palet(palet):
 	# Notify
 	game_manager.emit_signal("character_dropped_palet", self, palet)
 	
-	print(name + " drops " + palet.name)
+	print("[Character] " + name + " drops " + palet.name)
 
 func _draw():
 	# map navigation offset subtraction to copy of path (Pools are passed by value)

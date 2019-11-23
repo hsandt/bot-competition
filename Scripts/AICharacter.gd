@@ -37,7 +37,7 @@ func _process(delta):
 			if next_palet != null:
 				start_move_to(next_palet.global_position)
 				phase = Phase.PickPalet
-				print("[AI] " + name + " found next palet " + next_palet.name + " moving toward it.")
+				print("[AI] " + name + " found next palet " + next_palet.name + ". Moving toward it.")
 			else:
 				# nothing left to do, move to goal (in practice, game will end as soon as
 				# last palet has been dropped, but if expected count is too high then it may happen)

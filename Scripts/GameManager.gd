@@ -15,7 +15,7 @@ func _ready():
 
 func _on_character_dropped_palet(character, palet):
 	dropped_palets = dropped_palets + 1
-	print("Character " + str(character) + " palet " + str(palet) +
+	print("[GameManager] Character " + character.name + " dropped palet " + palet.name +
 		". Total dropped: " + str(dropped_palets))
 	if dropped_palets == palets_to_drop_count:
 		# Finish game and show results screen

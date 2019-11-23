@@ -113,7 +113,7 @@ texture_mode = 273403984
 tile_set = ExtResource( 6 )
 format = 1
 
-[node name="Palet" parent="." instance=ExtResource( 7 )]
+[node name="Palet1" parent="." instance=ExtResource( 7 )]
 position = Vector2( 222.518, 31.4494 )
 
 [node name="Palet2" parent="." instance=ExtResource( 7 )]
@@ -128,7 +128,7 @@ position = Vector2( 431.386, 74.1612 )
 [node name="HumanCharacter" parent="." instance=ExtResource( 8 )]
 position = Vector2( 76.9037, 243.296 )
 
-[node name="AICharacter" parent="." instance=ExtResource( 9 )]
+[node name="AICharacter1" parent="." instance=ExtResource( 9 )]
 position = Vector2( 45.2154, 150.582 )
 
 [node name="AICharacter2" parent="." instance=ExtResource( 9 )]
