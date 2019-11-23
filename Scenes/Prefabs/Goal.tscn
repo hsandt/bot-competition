@@ -1,27 +1,13 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://Graphics/Sprites/square_red.png" type="Texture" id=1]
+[ext_resource path="res://Scripts/Goal.gd" type="Script" id=1]
+[ext_resource path="res://Graphics/Sprites/square_red.png" type="Texture" id=2]
 
-[sub_resource type="GDScript" id=1]
-script/source = "extends Node2D
-
-# Signal for Goal Area2D, but detecting Palet KinematicBody2D, which is only
-# used to be dropped. Unfortunately, both Palet Area2D and KinematicBody2D
-# are required as Kinematic/Kinematic collision is not supported
-# so character couldn't pick palet without Area2D.
-func _on_Area2D_body_entered(body):
-	var palet = body.get_parent() as Palet
-	if palet:
-		var picker = palet.picker as Character
-		if picker:
-			picker.drop_palet(palet)
-"
-
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 30, 30 )
 
 [node name="Node2D" type="Node2D"]
-script = SubResource( 1 )
+script = ExtResource( 1 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -30,10 +16,10 @@ __meta__ = {
 collision_mask = 12
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource( 2 )
+shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
 scale = Vector2( 3, 3 )
-texture = ExtResource( 1 )
+texture = ExtResource( 2 )
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_Area2D_body_exited"]
