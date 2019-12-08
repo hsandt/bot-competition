@@ -1,23 +1,78 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Graphics/Fonts/MesloLGL-Regular.tres" type="DynamicFont" id=1]
-[ext_resource path="res://Scenes/Prefabs/AppManager.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Graphics/Fonts/MesloLGL-Regular-Small.tres" type="DynamicFont" id=2]
+[ext_resource path="res://Scenes/Prefabs/AppManager.tscn" type="PackedScene" id=3]
 
 [node name="Node2D" type="Node2D"]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Label" type="Label" parent="CanvasLayer"]
+[node name="Result" type="Label" parent="CanvasLayer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 100.0
-margin_top = 100.0
+margin_top = 48.7504
 margin_right = -100.0
-margin_bottom = -100.0
+margin_bottom = -388.25
 custom_fonts/font = ExtResource( 1 )
 text = "RESULT"
 align = 1
 valign = 1
 
-[node name="AppManager" parent="." instance=ExtResource( 2 )]
+[node name="GridContainer" type="GridContainer" parent="CanvasLayer"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -500.0
+margin_top = -52.0
+margin_right = 500.0
+margin_bottom = 248.0
+rect_pivot_offset = Vector2( 422.792, 60 )
+columns = 2
+__meta__ = {
+"_edit_group_": true
+}
 
+[node name="Character" type="Label" parent="CanvasLayer/GridContainer"]
+margin_right = 576.0
+margin_bottom = 94.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 2 )
+text = "Character"
+align = 1
+valign = 1
+
+[node name="Score" type="Label" parent="CanvasLayer/GridContainer"]
+margin_left = 580.0
+margin_right = 1000.0
+margin_bottom = 94.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 2 )
+text = "Score"
+align = 1
+valign = 1
+
+[node name="CharacterTemplate" type="Label" parent="CanvasLayer/GridContainer"]
+margin_top = 98.0
+margin_right = 576.0
+margin_bottom = 192.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 2 )
+text = "{character.name}"
+align = 1
+valign = 1
+
+[node name="ScoreTemplate" type="Label" parent="CanvasLayer/GridContainer"]
+margin_left = 580.0
+margin_top = 98.0
+margin_right = 1000.0
+margin_bottom = 192.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 2 )
+text = "{score}"
+align = 1
+valign = 1
+
+[node name="AppManager" parent="." instance=ExtResource( 3 )]

@@ -45,6 +45,8 @@ func _ready():
 #	line_2D = Line2D.new()
 #	get_tree().get_root().add_child(line_2D)
 
+	game_manager.emit_signal("register_character", self)
+
 	# initial update to clear debug line
 	update_debug_line()
 
