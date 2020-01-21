@@ -36,6 +36,11 @@ config/name="BotCompetition"
 run/main_scene="res://Scenes/Arena.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+AppManager="*res://Scenes/Prefabs/Manager/AppManager.tscn"
+GameManager="*res://Scenes/Prefabs/Manager/GameManager.tscn"
+
 [display]
 
 window/size/width=1280

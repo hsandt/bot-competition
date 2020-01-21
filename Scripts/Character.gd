@@ -3,8 +3,6 @@ class_name Character
 
 ## References
 
-onready var game_manager = $"/root/Root/GameManager"
-
 # Reference to common Navigation 2D for this level
 var navigation2D : Navigation2D
 
@@ -12,6 +10,9 @@ var navigation2D : Navigation2D
 var line_2D : Line2D
 
 ## Parameters
+
+# ID
+export var id = 0
 
 # Character speed (px/s)
 export var speed = 100.0
@@ -45,7 +46,7 @@ func _ready():
 #	line_2D = Line2D.new()
 #	get_tree().get_root().add_child(line_2D)
 
-	game_manager.emit_signal("register_character", self)
+	GameManager.emit_signal("register_character", self)
 
 	# initial update to clear debug line
 	update_debug_line()
@@ -135,7 +136,7 @@ func try_pick_palet(palet) -> bool:
 	print("[Character] " + name + " picks " + palet.name)
 	
 	# Notify
-	game_manager.emit_signal("character_picked_palet", self, palet)
+	GameManager.emit_signal("character_picked_palet", self, palet)
 	
 	# Success
 	return true
@@ -153,7 +154,7 @@ func drop_palet(palet):
 	palet.picker = null
 	
 	# Notify
-	game_manager.emit_signal("character_dropped_palet", self, palet)
+	GameManager.emit_signal("character_dropped_palet", self, palet)
 	
 	print("[Character] " + name + " drops " + palet.name)
 

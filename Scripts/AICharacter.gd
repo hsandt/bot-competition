@@ -21,8 +21,8 @@ func _ready():
 	var goal_group = get_tree().get_nodes_in_group("goal")
 	assert(not goal_group.empty())
 	goal = goal_group[0]
-	game_manager.connect("character_picked_palet", self, "_on_character_picked_palet")
-	game_manager.connect("character_dropped_palet", self, "_on_character_dropped_palet")
+	GameManager.connect("character_picked_palet", self, "_on_character_picked_palet")
+	GameManager.connect("character_dropped_palet", self, "_on_character_dropped_palet")
 
 func setup():
 	phase = Phase.Standby
