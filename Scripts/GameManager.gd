@@ -14,8 +14,8 @@ var score_by_character = {}
 
 func _ready():
 	# note that those signals are bound to methods directly defined on GameManager,
-	#   so we could also just call game_manager.do_stuff()
-	#   instead of game_manager.emit_signal(...)
+	#   so we could also just call GameManager.do_stuff()
+	#   instead of GameManager.emit_signal(...)
 	# for now we keep it, in case methods move to some ScoreManager
 	connect("register_character", self, "_on_register_character")
 	connect("character_dropped_palet", self, "_on_character_dropped_palet")
